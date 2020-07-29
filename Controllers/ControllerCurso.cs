@@ -26,12 +26,12 @@ namespace ProyectoCursos.Controllers
         }
 
 
-        public AddResult AñadirCurso(String cupo, String nrc, String nombre, String periodo)
+        public AddResult AñadirCurso(String cupo, String nrc, String nombre, String periodo, string seccion)
         {
             CursoDao DAO = new CursoDao();
             
 
-            Curso curso = new Curso(cupo, nrc,nombre,periodo);
+            Curso curso = new Curso(cupo, nrc,nombre,periodo,seccion);
            
            
             if (DAO.AddCurso(curso) == AddResult.Success)

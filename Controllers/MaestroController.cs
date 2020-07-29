@@ -23,12 +23,11 @@ namespace ProyectoCursos.Controllers
         }
 
 
-        public AddResult AñadirMaestro(String años,String materno,String paterno, string  correo, string curp, string fechaNacimiento, String genero, String id, String nombre, String perfil, String rfc)
+        public AddResult AñadirMaestro(String años,String materno,String paterno, string  correo, string curp, string nacimiento, String genero, String id, String nombre, String perfil, String rfc)
         {
             DocenteDao DAO = new DocenteDao();
-
-
-            Empleado curso = new Empleado(años, materno, paterno, correo, curp, fechaNacimiento, genero, id, nombre, perfil, rfc);
+            String tipo = "Maestro";
+            Empleado curso = new Empleado(años, materno, paterno,  correo,  curp,  nacimiento,  genero,  id,  nombre,  perfil, rfc,  tipo);
 
 
             if (DAO.AddDirectivo(curso) == AddResult.Success)
