@@ -57,7 +57,7 @@ namespace ProyectoCursos.Daos
                     {
                         Administrador administrador = new Administrador();
 
-                        administrador.nombre = reader["Nombre"].ToString();
+                        administrador.Nombre = reader["Nombre"].ToString();
                         administrador.IdAdministrador = reader["Id"].ToString();
                         
 

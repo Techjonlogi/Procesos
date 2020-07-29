@@ -18,16 +18,16 @@ namespace ProyectoCursos.Daos
             CheckFields validarCampos = new CheckFields();
             AddResult result = AddResult.UnknowFail;
             if (curso.Cupo == String.Empty ||
-                curso.nrc == String.Empty ||
-                curso.nombre == String.Empty ||
-                curso.periodo == String.Empty)
+                curso.NRC== String.Empty ||
+                curso.Nombre == String.Empty ||
+                curso.Periodo == String.Empty)
             {
                 throw new FormatException("Existen campos vacíos ");
             }
             else
-            if (validarCampos.ValidarNRC(curso.nrc) == CheckFields.ResultadosValidación.NRCInvalido)
+            if (validarCampos.ValidarNRC(curso.NRC) == CheckFields.ResultadosValidación.NRCInvalido)
             {
-                throw new FormatException("NRC inválido " + curso.nrc);
+                throw new FormatException("NRC inválido " + curso.NRC);
             }
             else
             {
@@ -61,9 +61,9 @@ namespace ProyectoCursos.Daos
                         Curso administrador = new Curso();
 
                         administrador.Cupo = reader["cupo"].ToString();
-                        administrador.nrc = reader["NRC"].ToString();
-                        administrador.nombre = reader["Nombre"].ToString();
-                        administrador.periodo = reader["Periodo"].ToString();
+                        administrador.NRC = reader["NRC"].ToString();
+                        administrador.Nombre = reader["Nombre"].ToString();
+                        administrador.Periodo = reader["Periodo"].ToString();
                         
                         listaCursos.Add(administrador);
                     }
@@ -96,9 +96,9 @@ namespace ProyectoCursos.Daos
                     while (reader.Read())
                     {
                         curso.Cupo = reader["cupo"].ToString();
-                        curso.nrc = reader["NRC"].ToString();
-                        curso.nombre = reader["Nombre"].ToString();
-                        curso.periodo = reader["Periodo"].ToString();
+                        curso.NRC = reader["NRC"].ToString();
+                        curso.Nombre = reader["Nombre"].ToString();
+                        curso.Periodo = reader["Periodo"].ToString();
                        
                     }
                 }
@@ -131,18 +131,20 @@ namespace ProyectoCursos.Daos
             using (SqlConnection connection = dbConnection.GetConnection())
             {
                 connection.Open();
-                using (SqlCommand command = new SqlCommand("INSERT INTO dbo.Curso VALUES(@cupo, @nrc, @nombre, @periodo)", connection))
+                using (SqlCommand command = new SqlCommand("INSERT INTO dbo.Curso VALUES(@cupo, @nrc, @nombre, @periodo,@seccion)", connection))
                 {
                     command.Parameters.Add(new SqlParameter("@cupo", curso.Cupo));
-                    command.Parameters.Add(new SqlParameter("@nrc", curso.nrc));
-                    command.Parameters.Add(new SqlParameter("@nombre", curso.nombre));
-                    command.Parameters.Add(new SqlParameter("@periodo", curso.periodo));
-                   ;
+                    command.Parameters.Add(new SqlParameter("@nrc", curso.NRC));
+                    command.Parameters.Add(new SqlParameter("@nombre", curso.Nombre));
+                    command.Parameters.Add(new SqlParameter("@periodo", curso.Periodo));
+                    command.Parameters.Add(new SqlParameter("@seccion", curso.Seccion));
+
+                    ;
                     try
                     {
                         command.ExecuteNonQuery();
                     }
-                    catch (SqlException)
+                    catch (SqlException e)
                     {
                         resultado = AddResult.SQLFail;
                         return resultado;

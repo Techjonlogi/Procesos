@@ -18,7 +18,7 @@ namespace ProyectoCursos.Daos
             CheckFields validarCampos = new CheckFields();
             AddResult result = AddResult.UnknowFail;
             if (
-                administrador.añosDeExperiencia == String.Empty ||
+                administrador.AñosDeExperiencia == String.Empty ||
                 administrador.ApellidoPaterno == String.Empty ||
                 administrador.ApellidoMaterno == String.Empty ||
                 administrador.Correo == String.Empty)
@@ -57,26 +57,27 @@ namespace ProyectoCursos.Daos
                 {
                     throw (ex);
                 }
-                using (SqlCommand command = new SqlCommand("SELECT * FROM dbo.Empleado INNER JOIN  dbo.Docente ON dbo.Empleado.ID=dbo.Docente.ID", connection))
+                using (SqlCommand command = new SqlCommand("SELECT * FROM dbo.Empleado WHERE Tipo='Maestro'", connection))
                 {
                     SqlDataReader reader = command.ExecuteReader();
                     while (reader.Read())
                     {
-                        Docente docente = new Docente();
+                        Docente directivo = new Docente();
 
-                        docente.añosDeExperiencia = reader["AñosExperiencia"].ToString();
-                        docente.ApellidoPaterno = reader["ApellidoPaterno"].ToString();
-                        docente.ApellidoMaterno = reader["ApellidoMAterno"].ToString();
-                        docente.Correo = reader["Correo"].ToString();
-                        docente.Curp = reader["FechaNacimimiento"].ToString();
-                        docente.genero = reader["Genero"].ToString();
-                        docente.idEmpleado = reader["ID"].ToString();
-                        docente.nombre = reader["Nombre"].ToString();
-                        docente.PerfilProfecional = reader["PerfilProfesional"].ToString();
-                        docente.rfc = reader["RFC"].ToString();
-                        
+                        directivo.AñosDeExperiencia = reader["AñosExperiencia"].ToString();
+                        directivo.ApellidoPaterno = reader["ApellidoPaterno"].ToString();
+                        directivo.ApellidoMaterno = reader["ApellidoMAterno"].ToString();
+                        directivo.Correo = reader["Correo"].ToString();
+                        directivo.Curp = reader["Curp"].ToString();
+                        directivo.FechadeNacimiento = reader["FechaNacimiento"].ToString();
+                        directivo.Genero = reader["Genero"].ToString();
+                        directivo.IdEmpleado = reader["ID"].ToString();
+                        directivo.Nombre = reader["Nombre"].ToString();
+                        directivo.PerfilProfecional = reader["PerfilProfesional"].ToString();
+                        directivo.Rfc = reader["RFC"].ToString();
 
-                        listaDocente.Add(docente);
+
+                        listaDocente.Add(directivo);
                     }
                 }
                 connection.Close();
@@ -100,22 +101,23 @@ namespace ProyectoCursos.Daos
                 {
                     throw (ex);
                 }
-                using (SqlCommand command = new SqlCommand("SELECT * FROM dbo.Empleado WHERE ID = @idToSearch", connection))
+                using (SqlCommand command = new SqlCommand("SELECT * FROM dbo.Empleado WHERE ID = @idToSearch AND Tipo='Maestro'", connection))
                 {
                     command.Parameters.Add(new SqlParameter("idToSearch", idToSearch));
                     SqlDataReader reader = command.ExecuteReader();
                     while (reader.Read())
                     {
-                        directivo.añosDeExperiencia = reader["AñosExperiencia"].ToString();
+                        directivo.AñosDeExperiencia = reader["AñosExperiencia"].ToString();
                         directivo.ApellidoPaterno = reader["ApellidoPaterno"].ToString();
                         directivo.ApellidoMaterno = reader["ApellidoMAterno"].ToString();
                         directivo.Correo = reader["Correo"].ToString();
-                        directivo.Curp = reader["FechaNacimimiento"].ToString();
-                        directivo.genero = reader["Genero"].ToString();
-                        directivo.idEmpleado = reader["ID"].ToString();
-                        directivo.nombre = reader["Nombre"].ToString();
+                        directivo.Curp = reader["Curp"].ToString();
+                        directivo.FechadeNacimiento = reader["FechaNacimiento"].ToString();
+                        directivo.Genero = reader["Genero"].ToString();
+                        directivo.IdEmpleado = reader["ID"].ToString();
+                        directivo.Nombre = reader["Nombre"].ToString();
                         directivo.PerfilProfecional = reader["PerfilProfesional"].ToString();
-                        directivo.rfc = reader["RFC"].ToString();
+                        directivo.Rfc = reader["RFC"].ToString();
                         
                     }
                 }
@@ -150,24 +152,27 @@ namespace ProyectoCursos.Daos
             using (SqlConnection connection = dbConnection.GetConnection())
             {
                 connection.Open();
-                using (SqlCommand command = new SqlCommand("INSERT INTO dbo.Empleado VALUES(@años, @paterno, @materno, @correo, @curp, @genero, @id, @nombre, @perfil, @rfc, null)", connection))
+                using (SqlCommand command = new SqlCommand("INSERT INTO dbo.Empleado VALUES(@años, @paterno, @materno, @correo, @curp, @fechanac,@genero,@id,@nombre,@perfil,@rfc,@tipo)", connection))
                 {
-                    command.Parameters.Add(new SqlParameter("@años", directivo.añosDeExperiencia));
+                    command.Parameters.Add(new SqlParameter("@años", directivo.AñosDeExperiencia));
                     command.Parameters.Add(new SqlParameter("@paterno", directivo.ApellidoPaterno));
                     command.Parameters.Add(new SqlParameter("@materno", directivo.ApellidoMaterno));
                     command.Parameters.Add(new SqlParameter("@correo", directivo.Correo));
                     command.Parameters.Add(new SqlParameter("@curp", directivo.Curp));
-                    command.Parameters.Add(new SqlParameter("@genero", directivo.genero));
-                    command.Parameters.Add(new SqlParameter("@id", directivo.idEmpleado));
-                    command.Parameters.Add(new SqlParameter("@nombre", directivo.nombre));
+                    command.Parameters.Add(new SqlParameter("@genero", directivo.Genero));
+                    command.Parameters.Add(new SqlParameter("@id", directivo.IdEmpleado));
+                    command.Parameters.Add(new SqlParameter("@nombre", directivo.Nombre));
                     command.Parameters.Add(new SqlParameter("@perfil", directivo.PerfilProfecional));
-                    command.Parameters.Add(new SqlParameter("@rfc", directivo.rfc));
+                    command.Parameters.Add(new SqlParameter("@rfc", directivo.Rfc));
+                    command.Parameters.Add(new SqlParameter("@tipo",directivo.Tipo ));
+                    command.Parameters.Add(new SqlParameter("@fechanac", directivo.FechadeNacimiento));
+
 
                     try
                     {
                         command.ExecuteNonQuery();
                     }
-                    catch (SqlException)
+                    catch (SqlException e)
                     {
                         resultado = AddResult.SQLFail;
                         return resultado;

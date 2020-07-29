@@ -105,7 +105,8 @@ namespace ProyectoCursos.Daos
 
                         administrador.Id = reader["idRegistro"].ToString();
                         administrador.reporte = reader["Reporte"].ToString();
-                        
+                        administrador.Curso = reader["Curso"].ToString();
+
                         listaAdministrador.Add(administrador);
                     }
                 }
