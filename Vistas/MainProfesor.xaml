@@ -1,0 +1,15 @@
+﻿<Window x:Class="ProyectoCursos.Vistas.MainProfesor"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProyectoCursos.Vistas"
+        mc:Ignorable="d"
+        Title="MainProfesor" Height="450" Width="800">
+    <Grid>
+        <TextBlock HorizontalAlignment="Left" Margin="70,31,0,0" TextWrapping="Wrap" Text="¿Que desea hacer hoy?" VerticalAlignment="Top" Height="51" Width="344" FontSize="24" FontFamily="Rockwell Extra Bold"/>
+        <Button x:Name="btnAgregarPlan" Content="Agregar Plan de Curso" HorizontalAlignment="Left" Margin="70,220,0,0" VerticalAlignment="Top" Width="142" Height="48" Click="btnAgregarPlan_Click"/>
+        <Button x:Name="btnInfoPersonal" Content="Consultar Info Personal" HorizontalAlignment="Left" Margin="70,323,0,0" VerticalAlignment="Top" Width="142" Height="47" Click="btnInfoPersonal_Click"/>
+
+    </Grid>
+</Window>

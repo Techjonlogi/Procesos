@@ -1,0 +1,16 @@
+﻿<Window x:Class="ProyectoCursos.Vistas.MainDirectivo"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProyectoCursos.Vistas"
+        mc:Ignorable="d"
+        Title="MainDirectivo" Height="450" Width="800">
+    <Grid>
+        <TextBlock HorizontalAlignment="Left" Margin="98,35,0,0" TextWrapping="Wrap" Text="¿Que desea hacer hoy?" VerticalAlignment="Top" FontSize="24" FontFamily="Rockwell Extra Bold"/>
+        <Button x:Name="btnConsultarMaestros" Content="Consultar Maestros" HorizontalAlignment="Left" Margin="74,230,0,0" VerticalAlignment="Top" Width="152" Height="58" Click="btnConsultarMaestros_Click"/>
+        <Button x:Name="btnconsultarReportes" Content="Consultar Reportes" HorizontalAlignment="Left" Margin="561,230,0,0" VerticalAlignment="Top" Width="152" Height="49" Click="btnconsultarReportes_Click"/>
+        <Button x:Name="btnRegresar" Content="Regresar" HorizontalAlignment="Left" Margin="364,372,0,0" VerticalAlignment="Top" Width="75" Click="btnRegresar_Click"/>
+
+    </Grid>
+</Window>

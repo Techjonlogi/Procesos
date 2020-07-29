@@ -8,16 +8,31 @@
         Title="AgregarCurso" Height="502.875" Width="800">
     <Grid>
         <TextBlock HorizontalAlignment="Left" Margin="97,54,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Rockwell Extra Bold" FontSize="24"><Run Text="ingrese los datos del curso "/><Run Text="a "/><Run Text="registrar"/></TextBlock>
-        <TextBox x:Name="txtbCupo" HorizontalAlignment="Left" Height="23" Margin="374,156,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="txtNRC" HorizontalAlignment="Left" Height="23" Margin="374,218,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="txtNombre" HorizontalAlignment="Left" Height="23" Margin="374,279,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="txtbPeriodo" HorizontalAlignment="Left" Height="23" Margin="374,342,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBlock HorizontalAlignment="Left" Margin="218,156,0,0" TextWrapping="Wrap" Text="Cupo" VerticalAlignment="Top" RenderTransformOrigin="0.469,-0.117"/>
-        <TextBlock HorizontalAlignment="Left" Margin="218,205,0,0" TextWrapping="Wrap" Text="NRC" VerticalAlignment="Top" RenderTransformOrigin="0.424,1.75"/>
-        <TextBlock HorizontalAlignment="Left" Margin="202,279,0,0" TextWrapping="Wrap" Text="Nombre" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtbCupo" HorizontalAlignment="Left" Height="23" Margin="374,222,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="txtNRC" HorizontalAlignment="Left" Height="23" Margin="374,114,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="txtNombre" HorizontalAlignment="Left" Height="23" Margin="374,172,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBlock HorizontalAlignment="Left" Margin="202,229,0,0" TextWrapping="Wrap" Text="Cupo" VerticalAlignment="Top" RenderTransformOrigin="0.469,-0.117"/>
+        <TextBlock HorizontalAlignment="Left" Margin="218,114,0,0" TextWrapping="Wrap" Text="NRC" VerticalAlignment="Top" RenderTransformOrigin="0.424,1.75"/>
+        <TextBlock HorizontalAlignment="Left" Margin="199,172,0,0" TextWrapping="Wrap" Text="Nombre" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Left" Margin="202,342,0,0" TextWrapping="Wrap" Text="Periodo" VerticalAlignment="Top"/>
-        <Button x:Name="btnRegistrar" Content="Registrar" HorizontalAlignment="Left" Margin="107,405,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="btnRegistrar" Content="Registrar" HorizontalAlignment="Left" Margin="107,405,0,0" VerticalAlignment="Top" Width="75" Click="btnRegistrar_Click"/>
         <Button x:Name="btnCancelar" Content="Cancelar" HorizontalAlignment="Left" Margin="633,405,0,0" VerticalAlignment="Top" Width="75"/>
+        <TextBlock HorizontalAlignment="Left" Margin="202,279,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Text="Sección"/><LineBreak/><Run/></TextBlock>
+        <ComboBox x:Name="comboSeccion" HorizontalAlignment="Left" Margin="374,279,0,0" VerticalAlignment="Top" Width="120">
+            <ComboBoxItem Content="Seccion 1" HorizontalAlignment="Left" Width="118"/>
+            <ComboBoxItem Content="Seccion 2" HorizontalAlignment="Left" Width="118"/>
+            <ComboBoxItem Content="Seccion 3" HorizontalAlignment="Left" Width="118"/>
+        </ComboBox>
+        <ComboBox x:Name="comboPeriodo" HorizontalAlignment="Left" Margin="374,355,0,0" VerticalAlignment="Top" Width="120">
+            <ComboBoxItem Content="1ero" HorizontalAlignment="Left" Width="118"/>
+            <ComboBoxItem Content="2do" HorizontalAlignment="Left" Width="118"/>
+            <ComboBoxItem Content="3ro" HorizontalAlignment="Left" Width="118"/>
+            <ComboBoxItem Content="4to" HorizontalAlignment="Left" Width="118"/>
+            <ComboBoxItem Content="5to" HorizontalAlignment="Left" Width="118"/>
+            <ComboBoxItem Content="6to" HorizontalAlignment="Left" Width="118"/>
+            <ComboBoxItem Content="7mo" HorizontalAlignment="Left" Width="118"/>
+            <ComboBoxItem Content="8vo" HorizontalAlignment="Left" Width="118"/>
+        </ComboBox>
 
     </Grid>
 </Window>

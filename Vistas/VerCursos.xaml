@@ -1,0 +1,15 @@
+﻿<Window x:Class="ProyectoCursos.Vistas.VerCursos"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProyectoCursos.Vistas"
+        mc:Ignorable="d"
+        Title="VerCursos" Height="450" Width="800">
+    <Grid>
+        <DataGrid x:Name="dataCursos" HorizontalAlignment="Left" Height="186" Margin="96,138,0,0" VerticalAlignment="Top" Width="591"/>
+        <TextBlock HorizontalAlignment="Left" Margin="65,38,0,0" TextWrapping="Wrap" Text="Los cursos registrados" VerticalAlignment="Top"/>
+        <Button x:Name="btnRegresar" Content="Regresar" HorizontalAlignment="Left" Margin="376,370,0,0" VerticalAlignment="Top" Width="75" Click="btnRegresar_Click"/>
+
+    </Grid>
+</Window>

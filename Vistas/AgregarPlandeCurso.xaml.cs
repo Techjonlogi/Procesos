@@ -12,21 +12,19 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using ProyectoCursos.Controllers;
-using ProyectoCursos.Logica;
-using static ProyectoCursos.Logica.AddEnum;
-using ProyectoCursos.Pojos;
 
 namespace ProyectoCursos.Vistas
 {
     /// <summary>
-    /// Lógica de interacción para AgregarCurso.xaml
+    /// Lógica de interacción para AgregarPlandeCurso.xaml
     /// </summary>
-    public partial class AgregarCurso : Window
+    public partial class AgregarPlandeCurso : Window
     {
-        public AgregarCurso()
+        public AgregarPlandeCurso()
         {
             InitializeComponent();
         }
+
 
         private enum ChecResults
         {
@@ -47,7 +45,8 @@ namespace ProyectoCursos.Vistas
         private ChecResults CheckEmptyFields()
         {
             ChecResults check = ChecResults.Failed;
-            if (txtbCupo.Text == String.Empty || comboPeriodo.Text == String.Empty || txtNombre.Text == String.Empty || txtNRC.Text == String.Empty )           {
+            if (txtActividades.Text == String.Empty || txtDescripcion.Text == String.Empty || txtIdentificador.Text == String.Empty || txtPeriodo.Text == String.Empty || txtTema.Text == String.Empty)
+            {
                 check = ChecResults.Failed;
             }
             else
@@ -67,17 +66,9 @@ namespace ProyectoCursos.Vistas
                 MessageBox.Show("Existen campos sin llenar");
                 check = ChecResults.Failed;
             }
-            else if (validarCampos.ValidarNRC(txtNRC.Text) == Logica.CheckFields.ResultadosValidación.NRCInvalido)
+            else  if (validarCampos.ValidarNRC(txtIdentificador.Text) == Logica.CheckFields.ResultadosValidación.NRCInvalido)
             {
-                MessageBox.Show("El NRC que ingresó no es correcto");
-            }
-            else if (validarCampos.ValidarNombres(txtNombre.Text) == Logica.CheckFields.ResultadosValidación.NombresInvalidos)
-            {
-                MessageBox.Show("El Nombre que ingresó no es correcto");
-            } 
-             else if (validarCampos.ValidarNumeropersonal(txtbCupo.Text) == Logica.CheckFields.ResultadosValidación.NúmeroInválido)
-            {
-                MessageBox.Show("El Cupo que ingresó no es correcto");
+                MessageBox.Show("El NRC es invalido");
             }else
             {
                 check = ChecResults.Passed;
@@ -96,7 +87,7 @@ namespace ProyectoCursos.Vistas
             }
             else if (result == OperationResult.UnknowFail)
             {
-                MessageBox.Show("No se puede agregar el curso con un nrc registrado");
+                MessageBox.Show("Error desconocido");
             }
             else if (result == OperationResult.SQLFail)
             {
@@ -104,21 +95,29 @@ namespace ProyectoCursos.Vistas
             }
             else if (result == OperationResult.ExistingRecord)
             {
-                MessageBox.Show("El plan de curos ya existe en el sistema");
+                MessageBox.Show("El Coordiandor ya existe en el sistema");
             }
+
         }
 
-        
+   
+
+
+
+        private void btnCancelar_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
 
         private void btnRegistrar_Click(object sender, RoutedEventArgs e)
         {
+
             if (CheckFields() == ChecResults.Passed)
             {
-                ControllerCurso controller = new ControllerCurso();
-                DateTime fecharegistro = DateTime.Today;
-                ComprobarResultado((OperationResult)controller.AñadirCurso(txtbCupo.Text, txtNRC.Text, txtNombre.Text,comboPeriodo.Text,comboSeccion.Text));
-            }
+                ControllerPlan controller = new ControllerPlan();
 
+                ComprobarResultado((OperationResult)controller.añadirPlan(txtActividades.Text, txtDescripcion.Text, txtPeriodo.Text, txtTema.Text, txtIdentificador.Text));
+            }
         }
     }
 }

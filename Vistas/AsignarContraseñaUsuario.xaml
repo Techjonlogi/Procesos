@@ -1,0 +1,20 @@
+﻿<Window x:Class="ProyectoCursos.Vistas.AsignarContraseñaUsuario"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProyectoCursos.Vistas"
+        mc:Ignorable="d"
+        Title="AsignarContraseñaUsuario" Height="516.784" Width="800">
+    <Grid>
+        <DataGrid x:Name="MaestrosData" HorizontalAlignment="Left" Height="192" Margin="53,84,0,0" VerticalAlignment="Top" Width="685"/>
+        <TextBox x:Name="TBUsuario" HorizontalAlignment="Left" Height="23" Margin="246,305,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="TBContraseña" HorizontalAlignment="Left" Height="23" Margin="246,361,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Button Content="Registrar" HorizontalAlignment="Left" Margin="142,428,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button Content="Cancelar" HorizontalAlignment="Left" Margin="611,428,0,0" VerticalAlignment="Top" Width="75"/>
+        <TextBlock HorizontalAlignment="Left" Margin="98,305,0,0" TextWrapping="Wrap" Text="Usuario" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="96,369,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Text="Contraseña"/><LineBreak/><Run/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="84,38,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="Selecciona el maestro al que asignará la cuenta" FontFamily="Segoe UI Black" FontSize="18"/>
+
+    </Grid>
+</Window>
